@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeLeft = document.querySelector('#time-left')
     const result = document.querySelector('#result')
     const startBtn = document.querySelector('#button')
+    const carsLeft = document.querySelector('car-left')
+    const carsRight = document.querySelector('car-right')
+    const logsLeft = document.querySelector('log-left')
+    const logsRight = document.querySelector('log-right')
     const width = 9
     let currentIndex = 76
     let timerId
@@ -28,6 +32,50 @@ document.addEventListener('DOMContentLoaded', () => {
                 break
         }
         squares[currentIndex].classList.add('frog')
+        lose()
+        win()
+    }
+
+    //move cars
+    function autoMoveCars() {
+        carsLeft.forEach(carsLeft => moveCarLeft(carLeft))
+        carsRight.forEach(carsRight => moveCarRight(carRight))
+    }
+
+    //move the car left on a time loop
+    function moveCarLeft() {
+        switch (true) {
+            case carLeft.classList.contains('c1'):
+                carLeft.classList.remove('c1')
+                carLeft.classList.add('c2')
+                break
+            case carLeft.classList.contains('c2'):
+                carLeft.classList.remove('c2')
+                carLeft.classList.add('c3')
+                break
+            case carLeft.classList.contains('c3'):
+                carLeft.classList.remove('c3')
+                carLeft.classList.add('c1')
+                break
+        }
+    }
+
+    //move the car right on a time loop
+    function moveCarRight() {
+        switch (true) {
+            case carRight.classList.contains('c1'):
+                carRight.classList.remove('c1')
+                carRight.classList.add('c3')
+                break
+            case carRight.classList.contains('c2'):
+                carRight.classList.remove('c2')
+                carRight.classList.add('c1')
+                break
+            case carRight.classList.contains('c3'):
+                carRight.classList.remove('c3')
+                carRight.classList.add('c2')
+                break
+        }
     }
 
 })
