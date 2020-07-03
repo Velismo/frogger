@@ -159,4 +159,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    //move the frog when its on the log moving left
+    function moveWithLogLeft() {
+        if (currentIndex >= 27 && currentIndex < 35) {
+            squares[currentIndex].classList.remove('frog')
+            currentIndex += 1
+            squares[currentIndex].classList.add('frog')
+        }
+    }
+
+    //move the frog when its on the log moving right
+    function moveWithLogRight() {
+        if (currentIndex > 18 && currentIndex <= 26) {
+            squares[currentIndex].classList.remove('frog')
+            currentIndex -= 1
+            squares[currentIndex].classList.add('frog')
+        }
+    }
+
+    //all the functions that move pieces
+    function movePieces() {
+        currentTime--
+        timeLeft.textContent = currentTime
+        autoMoveCars()
+        autoMoveLogs()
+        moveWithLogLeft()
+        moveWithLogRight()
+        lose()
+    }
+
 })
